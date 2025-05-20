@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto de Medicina Integral</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon_logo_redondo.ico" type="image/x-icon">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        /* Custom Blue Colors */
+        .text-custom-blue {
+            color: #157bb6;
+        }
+        
+        .bg-custom-blue {
+            background-color: #157bb6;
+        }
+        
+        .border-custom-blue {
+            border-color: #157bb6;
+        }
+        
+        .hover\:text-custom-blue:hover {
+            color: #1b4670;
+        }
+        
+        .hover\:bg-custom-blue:hover {
+            background-color: #1b4670;
+        }
+        
+        .bg-custom-blue-100 {
+            background-color: rgba(21, 123, 182, 0.1);
+        }
+        
+        .text-custom-blue-500 {
+            color: #157bb6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Hero Section Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+        
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+        
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+        
+        /* Gradient Background */
+        .gradient-bg {
+            background: linear-gradient(135deg, #157bb6 0%, #157bb6 30%, #132a48 100%);
+        }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Doctor Card Hover */
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Navigation */
+        .nav-link:hover {
+            color: #157bb6;
+        }
+        
+        /* Form Styles */
+        .appointment-form input, 
+        .appointment-form textarea,
+        .appointment-form select {
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .appointment-form input:focus, 
+        .appointment-form textarea:focus,
+        .appointment-form select:focus {
+            border-color: #157bb6;
+            box-shadow: 0 0 0 3px rgba(21, 123, 182, 0.2);
+        }
+        
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            padding: 0 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .carousel-item {
+                min-width: 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .carousel-item {
+                min-width: 25%;
+            }
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .carousel-control.prev {
+            left: 10px;
+        }
+        
+        .carousel-control.next {
+            right: 10px;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .carousel-dot.active {
+            background-color: #157bb6;
+        }
+        
+        /* CAC Button */
+        .cac-button {
+            transition: all 0.3s ease;
+        }
+        
+        .cac-button:hover {
+            background-color: #1b4670;
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 100%;
+            z-index: 1000;
+        }
+        
+        /* Touch Target Size */
+        .touch-target {
+            min-width: 48px;
+            min-height: 48px;
+        }
+        
+        /* Responsive Typography */
+        @media (max-width: 640px) {
+            .text-responsive {
+                font-size: 1.75rem;
+            }
+        }
+        
+        /* Loading Optimization */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .lazy-loaded {
+            opacity: 1;
+        }
+        
+        /* WhatsApp Float Button */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-effect {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-24 h-auto">
+                    <img src="fotos/Design sem nome (8).png" alt="Logo IMI" class="w-full h-auto">
+                </div>
+            </div>
+            
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="nav-link text-gray-700 font-medium hover:text-custom-blue transition">Início</a></li>
+                    <li><a href="#about" class="nav-link text-gray-700 font-medium hover:text-custom-blue transition">Sobre</a></li>
+                    <li><a href="#services" class="nav-link text-gray-700 font-medium hover:text-custom-blue transition">Serviços</a></li>
+                    <li><a href="#doctors" class="nav-link text-gray-700 font-medium hover:text-custom-blue transition">Profissionais</a></li>
+                    <li><a href="#appointment" class="nav-link text-gray-700 font-medium hover:text-custom-blue transition">Agendamento</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-700 font-medium hover:text-custom-blue transition">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none touch-target">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="mobile-menu md:hidden hidden bg-white py-4 px-4 shadow-lg">
+            <ul class="space-y-3">
+                <li><a href="#home" class="block py-3 text-gray-700 font-medium touch-target">Início</a></li>
+                <li><a href="#about" class="block py-3 text-gray-700 font-medium touch-target">Sobre</a></li>
+                <li><a href="#services" class="block py-3 text-gray-700 font-medium touch-target">Serviços</a></li>
+                <li><a href="#doctors" class="block py-3 text-gray-700 font-medium touch-target">Profissionais</a></li>
+                <li><a href="#appointment" class="block py-3 text-gray-700 font-medium touch-target">Agendamento</a></li>
+                <li><a href="#contact" class="block py-3 text-gray-700 font-medium touch-target">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- New Hero Section -->
+    <section id="home" class="pt-20 gradient-bg">
+        <div class="container mx-auto px-4 py-16 md:py-24 text-white">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-responsive">Instituto de Medicina Integral</h1>
+                    <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 delay-100">
+                        Excelência em cuidar de saúde
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10 delay-200">
+                    <a href="#appointment" class="bg-white text-custom-blue hover:bg-blue-50 font-bold py-4 px-8 rounded-full transition duration-300 inline-block pulse">
+                        <i class="fas fa-calendar-check mr-2"></i> Agende sua Consulta
+                    </a>
+                    <a href="#services" class="border-2 border-white text-white hover:bg-white hover:text-custom-blue font-bold py-4 px-8 rounded-full transition duration-300 inline-block">
+                        <i class="fas fa-stethoscope mr-2"></i> Nossos Serviços
+                    </a>
+                </div>
+                
+                <div class="mt-16 delay-300">
+                    <div class="flex justify-center space-x-8">
+                        <div class="text-center">
+                            <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-user-md text-2xl"></i>
+                            </div>
+                            <p>Especialistas Qualificados</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-heartbeat text-2xl"></i>
+                            </div>
+                            <p>Atendimento Humanizado</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-clinic-medical text-2xl"></i>
+                            </div>
+                            <p>Estrutura Completa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave Divider -->
+        <div class="wave-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full">
+                <path fill="#ffffff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="fotos/IMG_5951.CR2.jpg"
+                          alt="Clínica"
+                          class="rounded-lg shadow-xl w-full h-auto transition-transform duration-300 hover:scale-105 lazy-load"
+                         loading="lazy">
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Sobre o Instituto</h2>
+                    <p class="text-gray-600 mb-4">
+                        Fundado em 2020, o Instituto de Medicina Integral de Picos (IMI), localizado na cidade de Picos, no estado do Piauí, é uma instituição inovadora e referência em cuidados de saúde integrativos. Com uma abordagem humanizada, o IMI considera o paciente em sua totalidade — corpo, mente e espírito —, promovendo o bem-estar físico, emocional e social.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Nossa equipe multidisciplinar trabalha em conjunto para proporcionar diagnósticos precisos e tratamentos personalizados, sempre com foco na prevenção e na promoção da saúde. Fundado com o propósito de oferecer cuidados médicos de qualidade aliados à filosofia da medicina integral, o IMI se destaca por sua visão holística e compromisso com o cuidado integral do ser humano.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <div class="bg-custom-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-check-circle text-custom-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">Atendimento Humanizado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-custom-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-check-circle text-custom-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">Equipe Multidisciplinar</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-custom-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-check-circle text-custom-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">Tecnologia de Ponta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-custom-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-check-circle text-custom-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">Abordagem Integrativa</span>
+                        </div>
+                    </div>
+                    <a href="#services" class="text-custom-blue font-medium hover:text-custom-blue transition inline-flex items-center">
+                        Conheça nossos serviços <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Nossos Serviços</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Oferecemos uma ampla gama de serviços médicos para atender todas as necessidades 
+                    de saúde de nossos pacientes.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition relative">
+                    <div class="bg-custom-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-medkit text-custom-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Centro de Atendimento ao Câncer (CAC)</h3>
+                    <p class="text-gray-600 mb-6">
+                        Tratamento especializado e humanizado para pacientes oncológicos com equipe multidisciplinar.
+                    </p>
+                    <a href="cac.html" class="cac-button text-white font-medium py-2 px-6 rounded-full inline-flex items-center" style="background-color: #157bb6;">
+                        Saiba Mais <i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-custom-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-flask text-custom-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Exames Laboratoriais</h3>
+                    <p class="text-gray-600">
+                        Exames clínicos completos com tecnologia de ponta e resultados rápidos e precisos.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-custom-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-x-ray text-custom-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Exames de Imagens</h3>
+                    <p class="text-gray-600">
+                        Ressonância magnética, tomografia, ultrassonografia e outros exames de imagem de alta qualidade.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-custom-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-md text-custom-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Consultas Especializadas</h3>
+                    <p class="text-gray-600">
+                        Atendimento com especialistas em diversas áreas da medicina para diagnóstico e tratamento.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-custom-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-band-aid text-custom-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Central de Feridas</h3>
+                    <p class="text-gray-600">
+                        Tratamento especializado para feridas complexas e crônicas com protocolos avançados.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-custom-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-custom-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Check-up Preventivo</h3>
+                    <p class="text-gray-600">
+                        Programas personalizados de avaliação de saúde para prevenção e diagnóstico precoce.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section with Carousel -->
+    <section id="doctors" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Nossos Especialistas</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Conheça nossa equipe de profissionais altamente qualificados e comprometidos com sua saúde.
+                </p>
+            </div>
+            
+            <div class="carousel relative">
+                <button class="carousel-control prev touch-target" onclick="prevSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel-inner" id="carousel-inner">
+                    <!-- Doctor 1 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/1.jpg"
+                                   alt="Dra. Raquel Rufino"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dra. Raquel Rufino</h3>
+                                <p class="text-custom-blue font-medium mb-1">Angiologia e cirurgia vascular</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 4563 RQE 2948</p>
+                                <p class="text-gray-600 text-sm">
+                                    Varizes são um alerta! cuide da sua circulação antes que se torne um problema grave.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 2 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/2.jpg"
+                                   alt="Dr. Carlos Winston"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Carlos Winston</h3>
+                                <p class="text-custom-blue font-medium mb-1">Psiquiatra</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 6676 RQE 4035</p>
+                                <p class="text-gray-600 text-sm">
+                                    Transtornos do humor <br> Transtornosansiosos <br>Transtornos alimentares <br> Esquizofrenia e outras psicoses <br> Outros transtornos psiquiátricos
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 3 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/3.jpg"
+                                   alt="Dra. Jéssica Coelho de Sá"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dra. Jéssica Coelho de Sá</h3>
+                                <p class="text-custom-blue font-medium mb-1">Ultrassom e medicina fetal</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 5825 RGE 4466</p>
+                                <p class="text-gray-600 text-sm">
+                                    Morfológica de 1º e 2º trimestre <br> Ecocardiografia fetal <br> Ultrassom 3D/4D <br> Ultrassom obstétrica simples e doppler <br>Transvaginal
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 4 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/4.jpg"
+                                alt="Dr. Márcio Gregório"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Márcio Gregório</h3>
+                                <p class="text-custom-blue font-medium mb-1">Reumatologia</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM-PI 6717</p>
+                                <p class="text-gray-600 text-sm">
+                                    Quando estruturas essenciais do nosso coro, como ossos, músculos e ligamentos falham, é o reumatologista quedevemos procurar.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 5 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/5.jpg"
+                                alt="Dra. Camila Hanna"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dra. Camila Hanna</h3>
+                                <p class="text-custom-blue font-medium mb-1">Tratamento de feridas</p>
+                                <p class="text-gray-500 text-sm mb-3">COREN 588040</p>
+                                <p class="text-gray-600 text-sm">
+                                    Estomaterapeuta e enfermeira <br>Tratamento avançado de feridas <br> Curativos especializados <br>Podiatria clínica <br>Laserterapia
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 6 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/6.jpg"
+                                alt="Dr. Carlos Eduardo Sá"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Carlos Eduardo Sá</h3>
+                                <p class="text-custom-blue font-medium mb-1">Oncologista clínico</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 4564 RQE 3205</p>
+                                <p class="text-gray-600 text-sm">
+                                    Venha marca sua consulta!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 7 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/7.jpg"
+                                alt="Dr. Luciano Luz"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Luciano Luz</h3>
+                                <p class="text-custom-blue font-medium mb-1">Cirurgião de cabeça e pescoço</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 6294 RQE 4366</p>
+                                <p class="text-gray-600 text-sm">
+                                    Venha marca sua consulta!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 8 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/8.jpg"
+                                alt="Dr. Mário Vilany"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Mário Vilany</h3>
+                                <p class="text-custom-blue font-medium mb-1">Oncologista clínico</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 8619 RGE 8441</p>
+                                <p class="text-gray-600 text-sm">
+                                    Clinica Médica <br>Oncologia Clinica <br>Pós-graduação em Oncogeriatria <br>Pós-graduação em Nutrologia Oncológica
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 9 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/9.jpg"
+                                alt="Dr. Lázaro Macedo"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Lázaro Macedo</h3>
+                                <p class="text-custom-blue font-medium mb-1">Cirurgia disgestiva e bariática</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 9308 RQE 4692/4693</p>
+                                <p class="text-gray-600 text-sm">
+                                    Venha marca sua consulta!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 10 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/10.jpg"
+                                alt="Dr. Rogério Eulálio"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Rogério Eulálio</h3>
+                                <p class="text-custom-blue font-medium mb-1">Ortopedista</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 5826 RQE 4428</p>
+                                <p class="text-gray-600 text-sm">
+                                    Ortopedia e traumatologia <br> Medicina regenerativa <br>Medicina da dor <br>Ultrassonografia musculoesquelética
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 11 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/11.jpg"
+                                alt="Dr. Paulo Victor Marques"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Paulo Victor Marques</h3>
+                                <p class="text-custom-blue font-medium mb-1">Dermatologia</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 7812 RQE 3691</p>
+                                <p class="text-gray-600 text-sm">
+                                    Especialidade médica que trata da saúde e estéticada pele, cabelos e unhas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 12 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/12.jpg"
+                                alt="Dra. Ana Rafaela"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dra. Ana Rafaela</h3>
+                                <p class="text-custom-blue font-medium mb-1">Nutrição Especializada</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM 12458</p>
+                                <p class="text-gray-600 text-sm">
+                                    Pré e pôs cirurgia bariátrica <br>Auxílio no tratamento oncológico <br>Acompanhamento geriátrico <br>Avaliação nutricional completa <br> Redução de medidas antropométrica
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                                    
+                    <!-- Doctor 13 -->
+                    <div class="carousel-item">
+                        <div class="doctor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                            <img src="fotos/13.jpg"
+                                alt="Dra. Laíla Hipólito"
+                                   class="w-full h-64 object-cover lazy-load"
+                                  loading="lazy">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Dra. Laíla Hipólito</h3>
+                                <p class="text-custom-blue font-medium mb-1">Psicólogo</p>
+                                <p class="text-gray-500 text-sm mb-3">CRM-21/06442</p>
+                                <p class="text-gray-600 text-sm">
+                                    Cuidar da mente é tão essencial quanto cuidar do corpo. Sua saúde mental merece atenção!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control next touch-target" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-dots" id="carousel-dots">
+                    <!-- Dots will be added dynamically by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 text-white p-10 flex flex-col justify-center" style="background-color: #157bb6;">
+                        <h2 class="text-3xl font-bold mb-6">Agende sua Consulta</h2>
+                        <p class="mb-6">
+                            Preencha o formulário ao lado ou entre em contato diretamente por nossos canais:
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt mr-4 text-xl"></i>
+                                <span>(89)98137-0080 (WhatsApp)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt mr-4 text-xl"></i>
+                                <span>(89)3422-3071</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope mr-4 text-xl"></i>
+                                <span>clinicaimi@gmail.com
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h3 class="font-bold mb-4">Horário de Funcionamento</h3>
+                            <p class="mb-2">Segunda a Sexta: 8h às 17h</p>
+                            <p>Sábado: 8h às 11:30h</p>
+                        </div>
+                    </div>
+                                                    
+                    <div class="md:w-1/2 p-10">
+                        <form class="appointment-form" id="appointmentForm">
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2" for="name">Seu Nome *</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg focus:outline-none border" required>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2" for="phone">Sobrenome *</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg focus:outline-none border" required>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2" for="message">Mensagem para o atendimento</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg focus:outline-none border" placeholder="Ex: Gostaria de agendamento para Exames Laboratoriais"></textarea>
+                            </div>
+                            <button type="submit"
+                                    class="w-full text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center touch-target"
+                                    style="background-color: #157bb6;"
+                                    onmouseover="this.style.backgroundColor='#1b4670'"
+                                    onmouseout="this.style.backgroundColor='#157bb6'">
+                                <i class="fab fa-whatsapp mr-2 text-xl"></i> Solicitar Agendamento
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Nossa Localização</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Estamos localizados em um local de fácil acesso, com toda a estrutura para seu conforto.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-gray-100 p-8 rounded-lg h-full">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Informações de Contato</h3>
+                                                                 
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-custom-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-custom-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Endereço</h4>
+                                    <p class="text-gray-600">
+                                        Rua Francisco Prota, 503 - Centro<br>
+                                        Picos - PI, 64600-026
+                                    </p>
+                                </div>
+                            </div>
+                                                                                 
+                            <div class="flex items-start">
+                                <div class="bg-custom-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-custom-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Telefones</h4>
+                                    <p class="text-gray-600">
+                                        (89)3422-3071<br>
+                                        (89)98137-0080 (WhatsApp)
+                                    </p>
+                                </div>
+                            </div>
+                                                                                 
+                            <div class="flex items-start">
+                                <div class="bg-custom-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-custom-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">E-mail</h4>
+                                    <p class="text-gray-600">
+                                        clinicaimi@gmail.com
+                                    </p>
+                                </div>
+                            </div>
+                                                                                 
+                            <div class="flex items-start">
+                                <div class="bg-custom-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-custom-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Horário de Funcionamento</h4>
+                                    <p class="text-gray-600">
+                                        Segunda a Sexta: 8h às 17h<br>
+                                        Sábado: 8h às 11:30h<br>
+                                        Domingo: Fechado
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                                                                 
+                        <div class="mt-8">
+                            <h4 class="font-bold text-gray-800 mb-4">Redes Sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/imi_picos/" target="_blank" class="bg-custom-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-custom-blue-500 hover:bg-custom-blue hover:text-white transition touch-target">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                                                                         
+                                <a href="https://www.facebook.com/clinicaimipicos/" target="_blank" class="bg-custom-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-custom-blue-500 hover:bg-custom-blue hover:text-white transition touch-target">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                                                                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                        
+                <div class="md:w-1/2">
+                    <div class="h-full rounded-lg overflow-hidden">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.3571712224143!2d-41.4694711!3d-7.084527800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x79c1132e2b01c41%3A0xc246d3d27ccd5144!2sInstituto%20de%20Medicina%20Integral!5e0!3m2!1spt-BR!2sbr!4v1746116523039!5m2!1spt-BR!2sbr"
+                            width="100%"
+                            height="100%"
+                            style="min-height: 400px;"
+                           allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="rounded-lg shadow-lg lazy-load"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-24 h-auto">
+                            <img src="fotos/LOGOBRANCA.png" alt="Logo IMI" class="w-full h-auto">
+                        </div>
+                                                                             
+                    </div>
+                    <p class="text-gray-400">
+                        Cuidando da sua saúde com excelência e abordagem integral desde 2010.
+                    </p>
+                </div>
+                                                        
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Início</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">Sobre</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Serviços</a></li>
+                        <li><a href="#doctors" class="text-gray-400 hover:text-white transition">Profissionais</a></li>
+                        <li><a href="#appointment" class="text-gray-400 hover:text-white transition">Agendamento</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contato</a></li>
+                    </ul>
+                </div>
+                                                        
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="cac.html" class="text-gray-400 hover:text-white transition">Centro de Atendimento ao Câncer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Exames Laboratoriais</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Exames de Imagens</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Consultas Especializadas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Central de Feridas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Check-up Preventivo</a></li>
+                    </ul>
+                </div>
+                                                        
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Redes Sociais</h4>
+                    <p class="text-gray-400 mb-4">
+                        Siga-nos nas redes sociais!
+                    </p>
+                    </form>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="https://www.instagram.com/imi_picos/" target="_blank" class="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 w-10 h-10 rounded-full flex items-center justify-center text-white hover:opacity-90 transition shadow-lg touch-target">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                                                                             
+                        <a href="https://www.facebook.com/clinicaimipicos/" target="_blank" class="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition shadow-lg touch-target">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                                                         
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Instituto de Medicina Integral. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5589981370080?text=Olá,%20venho%20através%20do%20site%20e%20gostaria%20de%20um%20atendimento."
+     class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition z-50 float-effect touch-target">
+    <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Toggle do menu mobile corrigido
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+            
+            // Alternar entre ícone de hamburguer e X
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Fechar o menu quando um item for clicado
+        document.querySelectorAll('.mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.add('hidden');
+                document.querySelector('#mobile-menu-button i').classList.remove('fa-times');
+                document.querySelector('#mobile-menu-button i').classList.add('fa-bars');
+            });
+        });
+                
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+                
+        // Form submission for WhatsApp
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nameInput = document.getElementById('name');
+            const phoneInput = document.getElementById('phone');
+            const messageInput = document.getElementById('message');
+
+            // Validate fields
+            if (!nameInput.value.trim()) {
+                alert('Por favor, informe seu nome.');
+                nameInput.focus();
+                return;
+            }
+
+            if (!phoneInput.value.trim()) {
+                alert('Por favor, informe seu sobrenome.');
+                phoneInput.focus();
+                return;
+            }
+
+            // Encode message for URL
+            const name = encodeURIComponent(nameInput.value.trim());
+            const phone = encodeURIComponent(phoneInput.value.trim());
+            let message = messageInput.value.trim();
+
+            // Replace new lines with %0A and spaces with %20
+            message = message.replace(/\n/g, '%0A').replace(/ /g, '%20');
+
+            // Default message if empty
+            if (!message) {
+                message = 'Gostaria%20de%20agendar%20uma%20consulta';
+            }
+
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/5589981370080?text=Olá,%20me%20chamo%20${name}%20${phone}.%20${message}`;
+
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+        });
+                
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+        const carouselInner = document.getElementById('carousel-inner');
+        const dotsContainer = document.getElementById('carousel-dots');
+                
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+                
+        function updateCarousel() {
+            const itemWidth = 100 / getVisibleItems();
+            carouselInner.style.transform = `translateX(-${currentSlide * itemWidth}%)`;
+            
+            // Update active dot
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+                
+        function getVisibleItems() {
+            if (window.innerWidth >= 1024) return 4;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+        }
+                
+        function nextSlide() {
+            const visibleItems = getVisibleItems();
+            if (currentSlide < totalSlides - visibleItems) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateCarousel();
+        }
+                
+        function prevSlide() {
+            const visibleItems = getVisibleItems();
+            if (currentSlide > 0) {
+                currentSlide--;
+            } else {
+                currentSlide = totalSlides - visibleItems;
+            }
+            updateCarousel();
+        }
+                
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+                
+        // Handle window resize
+        window.addEventListener('resize', updateCarousel);
+                
+        // Initialize carousel
+        updateCarousel();
+                
+        // Auto slide every 5 seconds
+        setInterval(nextSlide, 5000);
+                
+        // Lazy load images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyLoadElements = document.querySelectorAll('.lazy-load');
+            
+            const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const lazyElement = entry.target;
+                                                
+                        if (lazyElement.tagName === 'IMG' || lazyElement.tagName === 'IFRAME') {
+                            lazyElement.src = lazyElement.dataset.src || lazyElement.src;
+                        }
+                                                
+                        lazyElement.classList.add('lazy-loaded');
+                        observer.unobserve(lazyElement);
+                    }
+                });
+            });
+            
+            lazyLoadElements.forEach(element => {
+                lazyLoadObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
